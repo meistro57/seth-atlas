@@ -170,9 +170,10 @@
   function layoutNodes(nodes){
     // fixed spatial layout (manual, meaningful: individual->collective left->right, layers top->bottom)
     var pos = {
-      belief:[80,60], probable:[240,150], selection:[240,300],
-      unconscious:[400,300], actuality:[560,300], experience:[720,300],
-      collective:[560,80], attraction:[400,80]
+      belief:[80,60], probable:[240,150], selection:[240,340],
+      handoff:[400,340], unconscious:[400,240], actuality:[600,340],
+      experience:[760,340], collective:[600,80], attraction:[400,80],
+      arbitration:[500,460]
     };
     nodes.forEach(function(n){ n.x = pos[n.id] ? pos[n.id][0] : 300; n.y = pos[n.id] ? pos[n.id][1] : 260; });
     return nodes;
@@ -199,7 +200,7 @@
     edges.forEach(function(e){
       var a=null,b=null; nodes.forEach(function(n){ if(n.id===e.from)a=n; if(n.id===e.to)b=n; });
       if(!a||!b)return;
-      var cls = e.status==='solid'?'solid':(e.status==='inferred'?'inferred':'question');
+      var cls = e.status==='solid'?'solid':(e.status==='inferred'?'inferred':(e.status==='annotation'?'annotation':'question'));
       s += '<line class="engine-edge '+cls+'" data-edge="'+e.from+'->'+e.to+'" x1="'+a.x+'" y1="'+a.y+'" x2="'+b.x+'" y2="'+b.y+'" marker-end=""/>';
     });
     // nodes
@@ -271,7 +272,7 @@
     // drag pan
     var dragging=false, sx=0, sy=0;
     svg.addEventListener("pointerdown", function(e){ dragging=true; sx=e.clientX; sy=e.clientY; svg.classList.add("dragging"); });
-    window.addEventListener("pointermove", function(e){ if(!dragging) return; vb.x -= (e.clientX-sx); vb.y -= (e.clientY-sy); sx=e.clientX; sy=e.clientY; redrawVB(); });
+    window.addEventListener("pointermove", function(e){ if(!dragging) return; var k=vb.w/1000; vb.x -= (e.clientX-sx)/k; vb.y -= (e.clientY-sy)/k; sx=e.clientX; sy=e.clientY; redrawVB(); });
     window.addEventListener("pointerup", function(){ dragging=false; svg.classList.remove("dragging"); });
     // focus-on-selection: re-center on node
     function focusNode(n){ vb.x = n.x - vb.w/2; vb.y = n.y - vb.h/2; redrawVB(); }
