@@ -12,42 +12,60 @@
     <div class="site-top-inner">
       <div class="brand">SETH ATLAS<span class="sub">The Architecture of Reality — Explore the claims. Trace the evidence. Discover the missing connections.</span></div>
       <nav class="main-nav" aria-label="primary">
-        <a href="#dashboard" aria-current="page">Dashboard</a>
+        <a href="#dashboard-section" aria-current="page">Dashboard</a>
+        <a href="#engine">Reality Engine</a>
         <a href="#models">Models</a>
-        <a href="#gallery">Diagrams</a>
+        <a href="#gallery-section">Diagrams</a>
         <a href="#evidence">Evidence</a>
-        <a href="#timeline">Timeline</a>
+        <a href="#timeline-section">Timeline</a>
         <a href="#robbery">Robbery</a>
-        <a href="#questions">Questions</a>
-        <a href="#corrections">Corrections</a>
+        <a href="#mystery">Mystery Map</a>
+        <a href="#questions-section">Questions</a>
+        <a href="#corrections-section">Corrections</a>
       </nav>
     </div>
   </header>
   <main>
-    <section class="hero">
+    <section class="hero intro-stage">
+      <h1>How does belief become physical reality?</h1>
+      <p class="tagline">Explore the claims. Trace the evidence. Discover the missing connections.</p>
+      <div class="intro-steps">
+        <div class="intro-step"><strong>Belief</strong><span class="arrow-down">&#8595;</span>focuses attention</div>
+        <div class="intro-step"><strong>Selection</strong><span class="arrow-down">&#8595;</span>screens probable events</div>
+        <div class="intro-step"><strong>Handoff <span class="pill negative">?</span></strong><span class="arrow-down">&#8595;</span>operation undescribed</div>
+        <div class="intro-step"><strong>Actuality</strong><span class="arrow-down">&#8595;</span>physical event</div>
+      </div>
+      <p class="intro-note">A visual explanation of the architecture — not a claim that the process is scientifically demonstrated. The gap is part of the finding.</p>
+
       <h1>How does belief become physical reality?</h1>
       <p class="lede">An openly-retracting reverse-engineering. Every claim is traceable to a verified source offset; every superseded conclusion is preserved, not erased.</p>
+      <div class="callout" id="model-qualifiers"><strong>Model status:</strong> <span class="pill negative">A — fails</span> <span class="pill negative">B — fails</span> <span class="pill inferred">C — provisional, accommodates-only</span> <span class="pill inferred">D — weak, provisional</span> <span class="pill annotation">none established</span></div>
       <div class="callout warn" id="ab-undecidable"><strong>Standing finding:</strong> the text does <em>not</em> discriminate Model A (collective construction) from Model B (individual selection). No examined passage places two competing selectors in one causal sentence. The evidence cannot distinguish them — and that emptiness is the finding, not a search failure.</div>
     </section>
-    <section id="dashboard"><h2>Research Dashboard</h2><div id="dashboard" aria-live="polite"><div class="empty-slate">Loading&hellip;</div></div></section>
+    <section id="dashboard-section"><h2>Research Dashboard</h2><div id="dashboard" aria-live="polite"><div class="empty-slate">Loading&hellip;</div></div></section>
+    <section id="engine"><h2>The Reality Engine</h2><p class="lede">Interactive map of the proposed architecture. Click a node for its explanation and source; click a connection for its evidence. <span class="pill explicit">solid</span> = quoted, <span class="pill inferred">dashed</span> = inferred, <span class="pill negative">?</span> = unresolved.</p><div id="engine-body"><div class="empty-slate">Loading&hellip;</div></div></section>
+
     <section id="models"><h2>Interactive Model Explorer</h2><div class="tabs" id="model-tabs" role="tablist">
       <button role="tab" aria-selected="true" data-model="A">Model A</button>
       <button role="tab" aria-selected="false" data-model="B">Model B</button>
       <button role="tab" aria-selected="false" data-model="C">Model C</button>
       <button role="tab" aria-selected="false" data-model="D">Phase 4</button>
     </div><div id="model-panel" class="card"><div class="empty-slate">Loading&hellip;</div></div></section>
-    <section id="gallery"><h2>Diagram Gallery</h2><p class="lede" id="arrow-legend"><strong>Arrow semantics (on every diagram):</strong> <span class="pill explicit">solid</span> = quoted in source · <span class="pill inferred">dashed</span> = our inference · <span class="pill negative">[?]</span> = unresolved / not stated.</p><div class="grid cols-2" id="gallery"></div></section>
+    <section id="gallery-section"><h2>Diagram Gallery</h2><p class="lede" id="arrow-legend"><strong>Arrow semantics (on every diagram):</strong> <span class="pill explicit">solid</span> = quoted in source · <span class="pill inferred">dashed</span> = our inference · <span class="pill negative">[?]</span> = unresolved / not stated.</p><div class="grid cols-2" id="gallery"></div></section>
     <section id="evidence"><h2>Evidence Explorer</h2>
       <div class="filters"><input id="ev-search" type="search" placeholder="Search claims&hellip;"/><select id="ev-filter"><option value="">All</option><option value="explicit">explicit</option><option value="inferred">inferred</option><option value="annotation">annotation</option><option value="negative">negative</option><option value="asserted">asserted-only</option></select></div>
       <div id="evidence-body"></div></section>
-    <section id="timeline"><h2>Research Timeline</h2><div class="grid cols-2" id="timeline"></div></section>
+    <section id="timeline-section"><h2>Research Timeline</h2><div class="grid cols-2" id="timeline"></div></section>
     <section id="robbery"><h2>The Robbery Experiment</h2><p class="lede">Seth's only worked two-person example — interactive, with the unexamined participant marked.</p><div id="robbery-body"><div class="empty-slate">Loading&hellip;</div></div></section>
 
-    <section id="questions"><h2>Open Questions</h2><div class="grid cols-2" id="questions"></div></section>
-    <section id="corrections"><h2>Corrections &amp; Retractions</h2><div id="corrections"></div></section>
+    <section id="mystery"><h2>The Mystery Map</h2><p class="lede">Unresolved questions and their dependencies. The shared-event problem is the hub.</p><div id="mystery-body"><div class="empty-slate">Loading&hellip;</div></div></section>
+
+    <section id="questions-section"><h2>Open Questions</h2><div class="grid cols-2" id="questions"></div></section>
+    <section id="corrections-section"><h2>Corrections &amp; Retractions</h2><div id="corrections"></div></section>
     <section id="sources"><h2>Source References</h2><div class="callout"><p>Offsets are byte positions into the verified extraction (SHA-256 a96cae0e&hellip;, 1,123,310 bytes), OCR-derived, not page numbers. Quotations are limited research-scope fragments.</p></div></section>
   </main>
   <footer class="site-foot"><div class="site-foot-inner">SETH RESEARCH LAB &mdash; evolving research portal. Provisional findings; retractions on the record.</div></footer>
+  <div class="obs-lightbox" id="obs-lightbox" role="dialog" aria-modal="true" aria-label="Diagram viewer"><button class="obs-close" aria-label="Close">&times;</button><img src="" alt="Diagram, zoomable"/><div class="obs-controls"><button data-obs="out">-</button><button data-obs="reset">Reset</button><button data-obs="in">+</button></div></div>
   <script src="js/app.js"></script>
 </body>
 </html>

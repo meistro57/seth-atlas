@@ -345,5 +345,182 @@
     ],
     "safeguard": "In one passage, Seth describes a person as having attracted an event and drawn it from probability into actuality (728379). He does not describe the robber's beliefs or selections. This passage is a metaphysical claim within Seth's framework; it is not evidence that victims of crime cause or deserve them, and it does not describe any real person.",
     "unexaminedLabel": "The robber's selection process is UNEXAMINED — the passage does not describe it. This is distinct from saying the robber has no independent selecting role; the text neither assigns nor excludes such a role — it is silent."
+  },
+  "realityEngine": {
+    "nodes": [
+      {
+        "id": "belief",
+        "label": "Conscious belief",
+        "layer": "individual",
+        "desc": "The focus that selects among probables.",
+        "evidence": "693302, 31690"
+      },
+      {
+        "id": "probable",
+        "label": "Probable events",
+        "layer": "individual",
+        "desc": "Nonphysical field of possible actualisations.",
+        "evidence": "728379"
+      },
+      {
+        "id": "selection",
+        "label": "Selection / screening",
+        "layer": "individual",
+        "desc": "Belief separates some probables from others.",
+        "evidence": "693302",
+        "status": "explicit"
+      },
+      {
+        "id": "unconscious",
+        "label": "Unconscious process",
+        "layer": "individual",
+        "desc": "Stages to a handoff; internal operation not described.",
+        "evidence": "772425, 483387, 490895",
+        "status": "annotation"
+      },
+      {
+        "id": "actuality",
+        "label": "Physical actuality",
+        "layer": "individual",
+        "desc": "Three-dimensional materialisation.",
+        "evidence": "693302",
+        "status": "explicit"
+      },
+      {
+        "id": "experience",
+        "label": "Individual experience",
+        "layer": "individual",
+        "desc": "Unique per person.",
+        "evidence": "78704",
+        "status": "explicit"
+      },
+      {
+        "id": "collective",
+        "label": "Collective reality",
+        "layer": "collective",
+        "desc": "Mass expectation, roles, acquiescence.",
+        "evidence": "30004, 649003, 650715",
+        "status": "asserted"
+      },
+      {
+        "id": "attraction",
+        "label": "Attraction / aggregation",
+        "layer": "collective",
+        "desc": "Like groups with like; no rule for unalike.",
+        "evidence": "56746, 119319",
+        "status": "explicit"
+      }
+    ],
+    "connections": [
+      {
+        "from": "belief",
+        "to": "probable",
+        "status": "solid",
+        "evidence": "693302 beliefs screen probables"
+      },
+      {
+        "from": "belief",
+        "to": "selection",
+        "status": "solid",
+        "evidence": "693302 separating probables"
+      },
+      {
+        "from": "probable",
+        "to": "selection",
+        "status": "solid",
+        "evidence": "728379 choose happenings"
+      },
+      {
+        "from": "selection",
+        "to": "unconscious",
+        "status": "solid",
+        "evidence": "772425 stages to handoff"
+      },
+      {
+        "from": "unconscious",
+        "to": "actuality",
+        "status": "question",
+        "evidence": "772425 operation undescribed"
+      },
+      {
+        "from": "actuality",
+        "to": "experience",
+        "status": "solid",
+        "evidence": "693302 actuality; 78704 unique experience"
+      },
+      {
+        "from": "experience",
+        "to": "collective",
+        "status": "question",
+        "evidence": "30004 asserted, mechanism missing"
+      },
+      {
+        "from": "attraction",
+        "to": "collective",
+        "status": "solid",
+        "evidence": "56746 like attracts like"
+      },
+      {
+        "from": "selection",
+        "to": "collective",
+        "status": "question",
+        "evidence": "no combining rule (A/B undecidable)"
+      }
+    ]
+  },
+  "mysteryMap": {
+    "central": "shared-event",
+    "questions": [
+      {
+        "id": "shared-event",
+        "label": "How do two incompatible expectations become ONE event?",
+        "prominent": true,
+        "known": "Beliefs select probables (728379, 693302); feelings group by likeness (56746).",
+        "missing": "No combining rule for unalike selections.",
+        "evidence": "728379 (robbery, one attractor + one unexamined), 895048 (react individually), 30004 (en masse, asserted).",
+        "dependsOn": [
+          "en-masse",
+          "external-opposition"
+        ]
+      },
+      {
+        "id": "en-masse",
+        "label": "Is 'en masse' one world or many jointly-produced?",
+        "known": "30004 asserts materialisation en masse of individual expectations.",
+        "missing": "Whether the shared world is singular or many.",
+        "evidence": "30004, 969795 (one reality, uniquely experienced).",
+        "dependsOn": [
+          "shared-event"
+        ]
+      },
+      {
+        "id": "external-opposition",
+        "label": "Is opposition ever genuinely external to one psyche?",
+        "known": "650715 role-complementarity resolves opposition as interior (split psyche).",
+        "missing": "Whether any conflict is between two separate wills.",
+        "evidence": "650715 (coverage: passages read, not corpus-mapped).",
+        "dependsOn": [
+          "shared-event"
+        ]
+      },
+      {
+        "id": "electromagnetic",
+        "label": "Does 'electromagnetic' (56746) explain or just analogue?",
+        "known": "56746 names a medium; 119319 'like attracts like'.",
+        "missing": "A mechanism, versus a metaphor.",
+        "evidence": "56746, 119319.",
+        "dependsOn": []
+      },
+      {
+        "id": "event-vs-experience",
+        "label": "Does belief change the event or the experience?",
+        "known": "261494 stages mental -> materialised -> perceived as one chain.",
+        "missing": "Whether the distinction is refused or merely unstated.",
+        "evidence": "261494, 78704, 969795.",
+        "dependsOn": [
+          "shared-event"
+        ]
+      }
+    ]
   }
 }

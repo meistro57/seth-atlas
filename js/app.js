@@ -94,7 +94,7 @@
       {f:"p4_decision_tree.svg",t:"Event vs experience decision"},
       {f:"p4_shared_event.svg",t:"Updated shared event"}
     ];
-    el.innerHTML = ds.map(function(d){return '<div class="card"><h3>'+esc(d.t)+'</h3><div class="diagram-frame"><figure><img src="assets/svg/'+esc(d.f)+'" alt="'+esc(d.t)+'" loading="lazy"/><figcaption>'+esc(d.f)+'</figcaption></figure></div></div>';}).join("");
+    el.innerHTML = ds.map(function(d){return '<div class="card"><h3>'+esc(d.t)+'</h3><div class="diagram-frame"><figure><img class="gallery-thumb" src="assets/svg/'+esc(d.f)+'" alt="'+esc(d.t)+'" loading="lazy" data-full="assets/svg/'+esc(d.f)+'"/><figcaption>'+esc(d.f)+' &mdash; click to expand</figcaption></figure></div></div>';}).join("");
   }
 
   var MODELS = {
@@ -159,10 +159,123 @@
       "<div class=\"callout\"><strong>Safeguard:</strong> "+esc(r.safeguard)+"</div>";
   }
 
+
+  // ---- Reality Engine (interactive node graph) ----
+  var ENGINE = {
+    nodes: {},
+    edges: [],
+    svg: null, detail: null, selected: null,
+    view: 'combined', ox: 0, oy: 0, scale: 1
+  };
+  function layoutNodes(nodes){
+    // fixed spatial layout (manual, meaningful: individual->collective left->right, layers top->bottom)
+    var pos = {
+      belief:[80,60], probable:[240,150], selection:[240,300],
+      unconscious:[400,300], actuality:[560,300], experience:[720,300],
+      collective:[560,80], attraction:[400,80]
+    };
+    nodes.forEach(function(n){ n.x = pos[n.id] ? pos[n.id][0] : 300; n.y = pos[n.id] ? pos[n.id][1] : 260; });
+    return nodes;
+  }
+  function renderEngine(){
+    var el = document.getElementById('engine-body'); if(!el||!DATA||!DATA.realityEngine) return;
+    var r = DATA.realityEngine;
+    layoutNodes(r.nodes);
+    var nodes = r.nodes.filter(function(n){ return ENGINE.view==='combined' || n.layer===ENGINE.view; });
+    var ids = {}; nodes.forEach(function(n){ ids[n.id]=1; });
+    var edges = r.connections.filter(function(c){ return ids[c.from] && ids[c.to]; });
+
+    var w=1000, h=460;
+    var ns = 'http://www.w3.org/2000/svg';
+    var s = '<div class="engine-wrap">';
+    s += '<div class="engine-toolbar">'
+      +'<button data-view="combined" class="active">Combined</button>'
+      +'<button data-view="individual">Individual</button>'
+      +'<button data-view="collective">Collective</button>'
+      +'<button data-action="reset">Reset view</button>'
+      +'</div>';
+    s += '<svg id="engine-canvas" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="xMidYMid meet">';
+    // edges
+    edges.forEach(function(e){
+      var a=null,b=null; nodes.forEach(function(n){ if(n.id===e.from)a=n; if(n.id===e.to)b=n; });
+      if(!a||!b)return;
+      var cls = e.status==='solid'?'solid':(e.status==='inferred'?'inferred':'question');
+      s += '<line class="engine-edge '+cls+'" data-edge="'+e.from+'->'+e.to+'" x1="'+a.x+'" y1="'+a.y+'" x2="'+b.x+'" y2="'+b.y+'" marker-end=""/>';
+    });
+    // nodes
+    nodes.forEach(function(n){
+      var fill = n.status==='question'?'#f85149':(n.status==='annotation'?'#58a6ff':(n.status==='asserted'?'#d29922':'#3fb950'));
+      s += '<g class="engine-node" data-node="'+n.id+'" transform="translate('+n.x+','+n.y+')">'
+        +'<circle r="18" fill="'+fill+'" stroke="#161b22" stroke-width="2"/>'
+        +'<text y="26" text-anchor="middle">'+n.label+'</text>'
+        +'</g>';
+    });
+    s += '</svg>';
+    s += '<div class="engine-detail" id="engine-detail"><div class="empty-slate">Click a node or connection.</div></div>';
+    s += '</div>';
+    el.innerHTML = s;
+
+    // interactions
+    var svg = el.querySelector('#engine-canvas');
+    var detail = el.querySelector('#engine-detail');
+    ENGINE.svg = svg; ENGINE.detail = detail;
+    el.querySelectorAll('.engine-node').forEach(function(g){
+      g.addEventListener('click', function(){
+        var id = g.getAttribute('data-node');
+        var n = null; r.nodes.forEach(function(x){ if(x.id===id)n=x; });
+        detail.innerHTML = '<h4>'+n.label+'</h4><p>'+n.desc+'</p><span class="offset">'+n.evidence+'</span>'
+          +(n.status?'<div class="meta">status: '+n.status+'</div>':'');
+      });
+    });
+    el.querySelectorAll('.engine-edge').forEach(function(l){
+      l.addEventListener('click', function(){
+        var key = l.getAttribute('data-edge');
+        var e = null; r.connections.forEach(function(x){ if((x.from+'->'+x.to)===key)e=x; });
+        var st = e.status==='solid'?'explicit (quoted)':(e.status==='inferred'?'inferred':'unresolved');
+        detail.innerHTML = '<h4>Connection</h4><p class="mono">'+key+'</p><p>'+st+'</p><div class="quote">'+e.evidence+'</div>';
+      });
+    });
+    // view buttons
+    el.querySelectorAll('.engine-toolbar button[data-view]').forEach(function(b){
+      b.addEventListener('click', function(){
+        ENGINE.view = b.getAttribute('data-view');
+        el.querySelectorAll('.engine-toolbar button').forEach(function(x){ x.classList.remove('active'); });
+        b.classList.add('active');
+        renderEngine();
+      });
+    });
+    el.querySelectorAll('.engine-toolbar button[data-action]').forEach(function(b){
+      b.addEventListener('click', function(){ renderEngine(); });
+    });
+  }
+
+
+
+  function renderMystery(){
+    var el=document.getElementById("mystery-body"); if(!el||!DATA||!DATA.mysteryMap) return;
+    var mm=DATA.mysteryMap;
+    var qs=mm.questions;
+    var html = "<div class=\"grid cols-2\">";
+    qs.forEach(function(q){
+      var central = q.id===mm.central;
+      var deps = q.dependsOn && q.dependsOn.length ? q.dependsOn.map(function(x){return "<span class=\"pill inferred\">"+esc(x)+"</span>";}).join(" ") : "<span class=\"empty-slate\">no upstream dependencies</span>";
+      html += "<div class=\"card\""+(central?" style=\"border-color:var(--bad)\"":"")+">"+
+        "<h3>"+(central?"<span class=\"status-dot bad\"></span>":"")+esc(q.label)+"</h3>"+
+        "<p><strong>Known:</strong> "+esc(q.known)+"</p>"+
+        "<p><strong>Missing:</strong> "+esc(q.missing)+"</p>"+
+        "<p><strong>Evidence:</strong> <span class=\"offset\">"+esc(q.evidence)+"</span></p>"+
+        "<div class=\"meta\">depends on: "+deps+"</div>"+
+        "</div>";
+    });
+    html += "</div>";
+    el.innerHTML = html;
+  }
+
   document.addEventListener("DOMContentLoaded", function(){
     fetch(DATA_URL).then(function(r){return r.json();}).then(function(d){
       DATA = d;
-      renderDashboard(); renderRobbery(); renderEvidence(); renderCorrections(); renderQuestions(); renderTimeline(); renderGallery(); wireTabs();
+      renderDashboard(); renderRobbery(); renderEngine(); renderMystery(); renderEvidence();
+    renderGallery(); wireObservatory(); renderCorrections(); renderQuestions(); renderTimeline(); wireTabs();
     }).catch(function(e){ console.error("data load failed", e); });
   });
 
