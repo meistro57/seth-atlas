@@ -336,7 +336,7 @@
     ],
     "whatInvestigatorsInfer": [
       "That beliefs select among probables and draw one into actuality (from 728379 and 693302).",
-      "That the second participant is 'unexamined, not silent (neither assigned nor excluded) — this is the reading, not Seth's sentence."
+      "That the second participant is 'unexamined — the passage is silent about the second participant (neither assigned nor excluded) — this is the reading, not Seth's sentence."
     ],
     "whatRemainsUnanswered": [
       "Does the robber also select or attract any version of the event?",
@@ -353,14 +353,16 @@
         "label": "Conscious belief",
         "layer": "individual",
         "desc": "The focus that selects among probables.",
-        "evidence": "693302, 31690"
+        "evidence": "693302, 31690",
+        "label_deletion": "survives as a named agent (no single offset; framing term)"
       },
       {
         "id": "probable",
         "label": "Probable events",
         "layer": "individual",
         "desc": "Nonphysical field of possible actualisations.",
-        "evidence": "728379"
+        "evidence": "728379",
+        "label_deletion": "fails without 728379 field-of-probables"
       },
       {
         "id": "selection",
@@ -368,7 +370,8 @@
         "layer": "individual",
         "desc": "Belief separates some probables from others.",
         "evidence": "693302",
-        "status": "explicit"
+        "status": "explicit",
+        "label_deletion": "fails without 693302 screening"
       },
       {
         "id": "unconscious",
@@ -376,7 +379,8 @@
         "layer": "individual",
         "desc": "Stages to a handoff; internal operation not described.",
         "evidence": "772425, 483387, 490895",
-        "status": "annotation"
+        "status": "annotation",
+        "label_deletion": "survives only as 772425 name, not as operation"
       },
       {
         "id": "actuality",
@@ -384,7 +388,8 @@
         "layer": "individual",
         "desc": "Three-dimensional materialisation.",
         "evidence": "693302",
-        "status": "explicit"
+        "status": "explicit",
+        "label_deletion": "fails without 693302 three-dimensional actuality"
       },
       {
         "id": "experience",
@@ -392,7 +397,8 @@
         "layer": "individual",
         "desc": "Unique per person.",
         "evidence": "78704",
-        "status": "explicit"
+        "status": "explicit",
+        "label_deletion": "fails without 78704 unique reality"
       },
       {
         "id": "collective",
@@ -400,7 +406,8 @@
         "layer": "collective",
         "desc": "Mass expectation, roles, acquiescence.",
         "evidence": "30004, 649003, 650715",
-        "status": "asserted"
+        "status": "asserted",
+        "label_deletion": "fails without 30004/649003"
       },
       {
         "id": "attraction",
@@ -408,7 +415,8 @@
         "layer": "collective",
         "desc": "Like groups with like; no rule for unalike.",
         "evidence": "56746, 119319",
-        "status": "explicit"
+        "status": "explicit",
+        "label_deletion": "fails without 56746 like-attracts-like"
       },
       {
         "id": "arbitration",
@@ -416,7 +424,21 @@
         "layer": "collective",
         "desc": "The missing operation: how two incompatible selections become one event. ABSENT from the examined text — this emptiness is the finding.",
         "evidence": "none found (A/B undecidability: no passage places two agents' selections in one causal sentence)",
-        "status": "question"
+        "status": "question",
+        "annotation": "the participant is \"not consciously aware how this takes place\" (483387) — occlusion, a description OF the gap, not a bridge across it",
+        "metaOffset": "483387",
+        "dominant": true,
+        "empty": true,
+        "label_deletion": "this node IS the absence — it exists precisely because no source supports a combining rule"
+      },
+      {
+        "id": "handoff",
+        "label": "Handoff",
+        "layer": "individual",
+        "desc": "Where the named stages end and the missing operation begins (772425).",
+        "evidence": "772425",
+        "status": "annotation",
+        "label_deletion": "survives as 772425 stage boundary"
       }
     ],
     "connections": [
@@ -424,61 +446,78 @@
         "from": "belief",
         "to": "probable",
         "status": "solid",
-        "evidence": "693302 beliefs screen probables"
+        "evidence": "693302 beliefs screen probables",
+        "deletion_test": "fails without 693302 — no screening claim"
       },
       {
         "from": "belief",
         "to": "selection",
         "status": "solid",
-        "evidence": "693302 separating probables"
+        "evidence": "693302 separating probables",
+        "deletion_test": "fails without 693302"
       },
       {
         "from": "probable",
         "to": "selection",
         "status": "solid",
-        "evidence": "728379 choose happenings"
+        "evidence": "728379 choose happenings",
+        "deletion_test": "fails without 728379"
       },
       {
         "from": "selection",
-        "to": "unconscious",
+        "to": "handoff",
         "status": "solid",
-        "evidence": "772425 stages to handoff"
+        "evidence": "772425 stages: accept→focus→exclude→narrow→activate",
+        "deletion_test": "holds as stage sequence (772425 listed)"
       },
       {
-        "from": "unconscious",
+        "from": "handoff",
         "to": "actuality",
         "status": "question",
-        "evidence": "772425 operation undescribed"
+        "evidence": "772425 names mechanisms but never their operation",
+        "deletion_test": "FAILS — survives only as a name, not an operation"
       },
       {
         "from": "actuality",
         "to": "experience",
         "status": "solid",
-        "evidence": "693302 actuality; 78704 unique experience"
+        "evidence": "693302 actuality; 78704 unique experience",
+        "deletion_test": "holds (693302 actuality; 78704 unique)"
       },
       {
         "from": "experience",
         "to": "collective",
         "status": "question",
-        "evidence": "30004 asserted, mechanism missing"
+        "evidence": "30004 asserted, mechanism missing",
+        "deletion_test": "FAILS — 30004 asserts outcome, no mechanism"
       },
       {
         "from": "attraction",
         "to": "collective",
         "status": "solid",
-        "evidence": "56746 like attracts like"
+        "evidence": "56746 like attracts like",
+        "deletion_test": "holds as analogical (56746), not mechanical"
       },
       {
         "from": "selection",
         "to": "arbitration",
         "status": "question",
-        "evidence": "combining rule: absent (no passage found)"
+        "evidence": "combining rule: absent (no passage found)",
+        "deletion_test": "ABSENT — no combining rule exists (this absence IS the finding)"
       },
       {
         "from": "arbitration",
         "to": "collective",
         "status": "question",
-        "evidence": "how combined selections become shared reality: unstated"
+        "evidence": "how combined selections become shared reality: unstated",
+        "deletion_test": "ABSENT — how combined selections become shared reality is unstated"
+      },
+      {
+        "from": "handoff",
+        "to": "unconscious",
+        "status": "annotation",
+        "evidence": "the handoff is where the participant is \"not consciously aware how\" (483387)",
+        "deletion_test": "annotation — removing it does not change the causal graph"
       }
     ]
   },

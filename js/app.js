@@ -204,11 +204,20 @@
     });
     // nodes
     nodes.forEach(function(n){
-      var fill = n.status==='question'?'#f85149':(n.status==='annotation'?'#58a6ff':(n.status==='asserted'?'#d29922':'#3fb950'));
-      s += '<g class="engine-node" data-node="'+n.id+'" transform="translate('+n.x+','+n.y+')">'
-        +'<circle r="18" fill="'+fill+'" stroke="#161b22" stroke-width="2"/>'
-        +'<text y="26" text-anchor="middle">'+n.label+'</text>'
-        +'</g>';
+      if(n.id==='arbitration'||n.empty){
+        s += '<g class="engine-node" data-node="'+n.id+'" transform="translate('+n.x+','+n.y+')">'
+          +'<circle r="34" fill="none" stroke="#ff6b8b" stroke-width="2.5" stroke-dasharray="7 5"/>'
+          +'<circle r="34" fill="none" stroke="rgba(255,107,139,.25)" stroke-width="9"/>'
+          +'<text y="-2" text-anchor="middle" font-size="30" fill="#ff6b8b" font-weight="700">?</text>'
+          +'<text y="46" text-anchor="middle" font-size="9" fill="#66718c">combining rule</text>'
+          +'</g>';
+      } else {
+        var fill = n.status==='question'?'#ff6b8b':(n.status==='annotation'?'#56d4f0':(n.status==='asserted'?'#e5c07b':'#49d3a3'));
+        s += '<g class="engine-node" data-node="'+n.id+'" transform="translate('+n.x+','+n.y+')">'
+          +'<circle r="18" fill="'+fill+'" stroke="#05070d" stroke-width="2"/>'
+          +'<text y="26" text-anchor="middle">'+n.label+'</text>'
+          +'</g>';
+      }
     });
     s += '</svg>';
     s += '<div class="engine-detail" id="engine-detail"><div class="empty-slate">Click a node or connection.</div></div>';
@@ -223,7 +232,7 @@
       g.addEventListener('click', function(){
         var id = g.getAttribute('data-node');
         var n = null; r.nodes.forEach(function(x){ if(x.id===id)n=x; });
-        detail.innerHTML = '<h4>'+n.label+'</h4><p>'+n.desc+'</p><span class="offset">'+n.evidence+'</span>'
+        detail.innerHTML = '<h4>'+n.label+'</h4><p>'+n.desc+'</p>'+(n.annotation?'<div class="quote">'+n.annotation+'</div>':'')+'<span class="offset">'+n.evidence+'</span>'
           +(n.status?'<div class="meta">status: '+n.status+'</div>':'');
       });
     });
