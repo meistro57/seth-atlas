@@ -409,6 +409,14 @@
         "desc": "Like groups with like; no rule for unalike.",
         "evidence": "56746, 119319",
         "status": "explicit"
+      },
+      {
+        "id": "arbitration",
+        "label": "? combining rule",
+        "layer": "collective",
+        "desc": "The missing operation: how two incompatible selections become one event. ABSENT from the examined text — this emptiness is the finding.",
+        "evidence": "none found (A/B undecidability: no passage places two agents' selections in one causal sentence)",
+        "status": "question"
       }
     ],
     "connections": [
@@ -462,9 +470,15 @@
       },
       {
         "from": "selection",
+        "to": "arbitration",
+        "status": "question",
+        "evidence": "combining rule: absent (no passage found)"
+      },
+      {
+        "from": "arbitration",
         "to": "collective",
         "status": "question",
-        "evidence": "no combining rule (A/B undecidable)"
+        "evidence": "how combined selections become shared reality: unstated"
       }
     ]
   },
