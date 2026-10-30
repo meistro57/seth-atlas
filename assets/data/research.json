@@ -1,0 +1,349 @@
+{
+  "meta": {
+    "corpus_hash": "a96cae0e5c84ac82fa67db03937be7ed98ef19a0418b473c1e63b3ebf1e77784",
+    "corpus_bytes": 1123310,
+    "source_label": "NOPR 1.12 MB extraction",
+    "note": "Offsets are byte offsets into /tmp/seth_nopr.txt. OCR-derived; quoted fragments are limited quotations for research, not reproduction."
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "offset": "728379",
+      "claim": "Selection: you choose which probable events physically materialise",
+      "interpretation": "explicit",
+      "confidence": "high",
+      "status": "stage-2",
+      "phase": 4,
+      "models": [
+        "B"
+      ],
+      "text": "From a given field of action you choose those happenings that will be physically materialized. This operates in individual and mass terms."
+    },
+    {
+      "id": "c2",
+      "offset": "728379",
+      "claim": "Seth's own two-person worked example: victim/robber",
+      "interpretation": "explicit",
+      "confidence": "high",
+      "status": "stage-2",
+      "phase": 4,
+      "models": [
+        "D-adjacent"
+      ],
+      "text": "Suppose your home was robbed... more than one person would have to be involved — the victim and the robber... you attracted such an event, and drew it from probability into actuality."
+    },
+    {
+      "id": "c3",
+      "offset": "261494",
+      "claim": "Event first mental, then physically materialised",
+      "interpretation": "explicit",
+      "confidence": "high",
+      "status": "stage-2",
+      "phase": 4,
+      "models": [
+        "D-adjacent"
+      ],
+      "text": "a physical event but it was initially a mental one... physically materialized, perceived and reacted to... propelled from inner reality to outward reality through belief, emotion and imagination."
+    },
+    {
+      "id": "c4",
+      "offset": "969795",
+      "claim": "One reality, uniquely experienced",
+      "interpretation": "explicit",
+      "confidence": "medium",
+      "status": "stage-2",
+      "phase": 4,
+      "models": [
+        "D"
+      ],
+      "text": "en masse... you help form a physical reality in which, however, each experience is unique."
+    },
+    {
+      "id": "c5",
+      "offset": "693302",
+      "claim": "Beliefs screen probable events into actuality",
+      "interpretation": "explicit",
+      "confidence": "high",
+      "status": "stage-2",
+      "phase": 3,
+      "models": [
+        "B"
+      ],
+      "text": "beliefs... screening and directing agents, separating certain nonphysical probable events from others... bringing them into three-dimensional actuality."
+    },
+    {
+      "id": "c6",
+      "offset": "772425",
+      "claim": "Causal stages to a handoff, then silence",
+      "interpretation": "explicit",
+      "confidence": "high",
+      "status": "stage-2",
+      "phase": 3,
+      "models": [
+        "C"
+      ],
+      "text": "accept, focus, exclude contrary data, narrow interest, activate unconscious mechanisms, then materialise — you are not consciously aware how this takes place."
+    },
+    {
+      "id": "c7",
+      "offset": "483387",
+      "claim": "Non-awareness of HOW (epistemic position)",
+      "interpretation": "explicit",
+      "confidence": "high",
+      "status": "annotation",
+      "phase": 3,
+      "models": [],
+      "text": "not consciously aware how this takes place"
+    },
+    {
+      "id": "c8",
+      "offset": "490895",
+      "claim": "Creation mechanism hidden by analogy",
+      "interpretation": "explicit",
+      "confidence": "medium",
+      "status": "stage-2",
+      "phase": 1,
+      "models": [],
+      "text": "as artistic processes are hidden, so the inner mechanisms by which you create your material self"
+    },
+    {
+      "id": "c9",
+      "offset": "56746",
+      "claim": "Feelings group through attraction (aggregation of like)",
+      "interpretation": "explicit",
+      "confidence": "medium",
+      "status": "stage-2",
+      "phase": 2,
+      "models": [
+        "C"
+      ],
+      "text": "feelings have electromagnetic realities... they group through attraction... coalesce either in matter as objects or as events in time."
+    },
+    {
+      "id": "c10",
+      "offset": "119319",
+      "claim": "Like attracts like (analogy, not mechanism)",
+      "interpretation": "explicit",
+      "confidence": "medium",
+      "status": "stage-2",
+      "phase": 3,
+      "models": [
+        "B"
+      ],
+      "text": "Ideas have an electromagnetic reality... Like attracts like, so similar ideas group about each other."
+    },
+    {
+      "id": "c11",
+      "offset": "30004",
+      "claim": "World = materialisation en masse of individual expectations",
+      "interpretation": "explicit",
+      "confidence": "high",
+      "status": "asserted-only",
+      "phase": 2,
+      "models": [
+        "A-outcome"
+      ],
+      "text": "The world as the race of man knows it is the materialization en masse of your individual expectations... your joint creation."
+    },
+    {
+      "id": "c12",
+      "offset": "649003",
+      "claim": "Assent to a script authored by others (imposed, not free consent)",
+      "interpretation": "explicit",
+      "confidence": "high",
+      "status": "stage-2",
+      "phase": 3,
+      "models": [
+        "C"
+      ],
+      "text": "a script written by others — to which, however, they have acquiesced"
+    },
+    {
+      "id": "c13",
+      "offset": "650715",
+      "claim": "Groups acquiesce to roles in a split psyche",
+      "interpretation": "explicit",
+      "confidence": "medium",
+      "status": "stage-2",
+      "phase": 2,
+      "models": [
+        "C"
+      ],
+      "text": "Nations, like individuals, can have split personalities... both groups acquiesced to their roles."
+    },
+    {
+      "id": "c14",
+      "offset": "895048",
+      "claim": "Shared dilemma, per-person reaction (no joint resolution)",
+      "interpretation": "explicit",
+      "confidence": "high",
+      "status": "provisional-single-passage",
+      "phase": 4,
+      "models": [
+        "D-adjacent"
+      ],
+      "text": "according to your beliefs you deal with the physical dilemma... you will react individually with your own purposes... the pool... composed of unalike charges."
+    },
+    {
+      "id": "c15",
+      "offset": "31690",
+      "claim": "Selection by agreement (accord filter)",
+      "interpretation": "explicit",
+      "confidence": "high",
+      "status": "stage-2",
+      "phase": 3,
+      "models": [
+        "B"
+      ],
+      "text": "project those with which you basically agree... they coalesce into the events."
+    }
+  ],
+  "corrections": [
+    {
+      "id": "cor1",
+      "when": "Phase 1",
+      "what": "Percentile framing withdrawn (311 vs 1 = different units)"
+    },
+    {
+      "id": "cor2",
+      "when": "Phase 2",
+      "what": "31690 & 56746 re-attributed to Preface/front matter, not Ch.1"
+    },
+    {
+      "id": "cor3",
+      "when": "Phase 3",
+      "what": "'three-locus-as-one-claim' pooling retracted"
+    },
+    {
+      "id": "cor4",
+      "when": "Phase 3",
+      "what": "A/B declared UNDECIDABLE (no passage discriminates)"
+    },
+    {
+      "id": "cor5",
+      "when": "Phase 4",
+      "what": "'structurally necessary' → 'structural position within the balance' (Ohm)"
+    },
+    {
+      "id": "cor6",
+      "when": "Phase 4",
+      "what": "'one attractor per event' → 'single worked example, second party unexamined' (Ohm)"
+    },
+    {
+      "when": "Phase 1",
+      "what": "490987 as a locus → same-sentence continuation of 490895 (not a separate locus)"
+    },
+    {
+      "when": "Phase 1",
+      "what": "SS 294265 as strong instance → family gestalts (removed from strong set)"
+    },
+    {
+      "when": "Phase 3",
+      "what": "'acquiesce' read as a mechanism verb → consent-to-script (social idiom, three vocabulary misses)"
+    },
+    {
+      "when": "Phase 3",
+      "what": "'materialisation en masse' as mechanism → assertion of outcome, no operation described"
+    },
+    {
+      "when": "Phase 4",
+      "what": "Ch.18 'no conflict mechanism' → 'no conflict language in Ch.18' (coverage qualifier)"
+    },
+    {
+      "when": "Phase 4",
+      "what": "'no internal operations described' → 'not described in the passages examined' (coverage qualifier)"
+    }
+  ],
+  "timeline": [
+    {
+      "phase": 1,
+      "title": "Individual mechanism",
+      "finding": "Three unpooled claims: hiddenness once (490895), non-awareness (483387), causal stages to handoff (772425). No internal-operations description."
+    },
+    {
+      "phase": 2,
+      "title": "Shared reality",
+      "finding": "Settlement, not composition: acquiescence to roles (650715), give-and-take. No conflict-resolution rule."
+    },
+    {
+      "phase": 3,
+      "title": "Three models",
+      "finding": "A/B undecidable; C accommodates-only. Selection (728379, 693302) is explicit; combination is never stated."
+    },
+    {
+      "phase": 4,
+      "title": "Event vs experience",
+      "finding": "D-adjacent: 728379 victim/robber — one attracts, the other is constitutively present but unexamined. The distinction is refused, not answered."
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "q1",
+      "question": "Is electromagnetic (56746) explanation or analogy?",
+      "status": "answered",
+      "answer": "Analogy. Names a medium, describes no interaction."
+    },
+    {
+      "id": "q2",
+      "question": "Is 'en masse' one world or many jointly-produced?",
+      "status": "open",
+      "evidence": [
+        "c11",
+        "c4"
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "Is opposition ever genuinely external to one psyche?",
+      "status": "open",
+      "evidence": [
+        "c13"
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "Does any passage place two agents' selections in one causal sentence?",
+      "status": "answered",
+      "answer": "No, across NOPR (1,123,310 bytes). 0 hits."
+    },
+    {
+      "id": "q5",
+      "question": "Does belief change the event, or the experience?",
+      "status": "open",
+      "evidence": [
+        "c3",
+        "c4",
+        "c14"
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "Is the robber's selection in 728379 addressed anywhere?",
+      "status": "unexamined-in-source",
+      "evidence": [
+        "c2"
+      ]
+    }
+  ],
+  "robbery": {
+    "title": "The Robbery Experiment (NOPR 728379)",
+    "source": "728379",
+    "description": "Seth's only worked two-person example. A home is robbed; two parties are named: the victim and the robber.",
+    "whatTheTextEstablishes": [
+      "One person is described as having attracted the event: you attracted such an event (as described in the one passage), and drew it from probability into actuality.",
+      "The event kind REQUIRES two participants: more than one person would have to be involved — the victim and the robber.",
+      "The robber is constitutively PRESENT; the text does not examine the robber's belief, expectation, or selection."
+    ],
+    "whatInvestigatorsInfer": [
+      "That beliefs select among probables and draw one into actuality (from 728379 and 693302).",
+      "That the second participant is 'unexamined, not silent (neither assigned nor excluded) — this is the reading, not Seth's sentence."
+    ],
+    "whatRemainsUnanswered": [
+      "Does the robber also select or attract any version of the event?",
+      "Is there a rule by which two parties' roles cohere into one event?",
+      "Would the event occur without the second party's involvement?"
+    ],
+    "safeguard": "In one passage, Seth describes a person as having attracted an event and drawn it from probability into actuality (728379). He does not describe the robber's beliefs or selections. This passage is a metaphysical claim within Seth's framework; it is not evidence that victims of crime cause or deserve them, and it does not describe any real person.",
+    "unexaminedLabel": "The robber's selection process is UNEXAMINED — the passage does not describe it. This is distinct from saying the robber has no independent selecting role; the text neither assigns nor excludes such a role — it is silent."
+  }
+}
