@@ -233,6 +233,7 @@
       g.addEventListener('click', function(){
         var id = g.getAttribute('data-node');
         var n = null; r.nodes.forEach(function(x){ if(x.id===id)n=x; });
+        if(n) recompose(id);
         detail.innerHTML = '<h4>'+n.label+'</h4><p>'+n.desc+'</p>'+(n.annotation?'<div class="quote">'+n.annotation+'</div>':'')+'<span class="offset">'+n.evidence+'</span>'
           +(n.status?'<div class="meta">status: '+n.status+'</div>':'');
       });
@@ -257,6 +258,28 @@
     el.querySelectorAll('.engine-toolbar button[data-action]').forEach(function(b){
       b.addEventListener('click', function(){ renderEngine(); });
     });
+
+    // selection-driven recomposition: pull neighbours toward the selected node, push others away (smooth)
+    function recompose(selId){
+      var neigh = {}; r.connections.forEach(function(c){ if(c.from===selId) neigh[c.to]=1; if(c.to===selId) neigh[c.from]=1; });
+      r.nodes.forEach(function(n){
+        if(n.id===selId) return; // selected stays
+        var isNeigh = !!neigh[n.id];
+        // target: neighbours cluster around selected; others drift outward
+        if(isNeigh){
+          n.tx = n.x + (n.x < 500 ? -40 : 40); n.ty = n.y + (selId==='arbitration' ? -60 : 20);
+        } else {
+          n.tx = n.x + (n.x < 500 ? -90 : 90); n.ty = n.y + (n.y < 250 ? -70 : 50);
+        }
+      });
+      // animate via transition on transform (respect reduced motion handled by CSS)
+      r.nodes.forEach(function(n){
+        var g = el.querySelector('.engine-node[data-node="'+n.id+'"]');
+        if(g){ g.style.transition='transform .5s ease'; g.setAttribute('transform','translate('+n.tx+','+n.ty+')'); }
+        n.x = n.tx; n.y = n.ty;
+      });
+    }
+
     // --- pan / zoom / keyboard ---
     var vb = { x:0, y:0, w:1000, h:460 };
     svg.viewBox.baseVal.x = vb.x; svg.viewBox.baseVal.y = vb.y; svg.viewBox.baseVal.width = vb.w; svg.viewBox.baseVal.height = vb.h;
