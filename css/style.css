@@ -176,3 +176,7 @@ footer.site-foot{border-top:1px solid var(--border);background:var(--bg-soft);}
 .cta:hover{transform:translateY(-2px);background:rgba(86,212,240,.16);box-shadow:0 0 40px rgba(86,212,240,.25);text-decoration:none;}
 @media(prefers-reduced-motion:reduce){ .reveal-line{animation:none} .cta{transition:none} }
 @media(max-width:640px){ .story .scene{padding:48px 16px} }
+
+/* Provenance: offsets are character positions in our OCR extraction, NOT page numbers */
+.offset::after{content:" (char offset, not page no.)";font-size:.66em;color:var(--ink-faint);font-variant:normal;letter-spacing:0;margin-left:2px;font-family:var(--sans);}
+.offset{color:var(--accent-2);font-family:var(--mono);font-size:.85em;}
