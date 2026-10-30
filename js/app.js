@@ -247,6 +247,43 @@
     el.querySelectorAll('.engine-toolbar button[data-action]').forEach(function(b){
       b.addEventListener('click', function(){ renderEngine(); });
     });
+    // --- pan / zoom / keyboard ---
+    var vb = { x:0, y:0, w:1000, h:460 };
+    svg.viewBox.baseVal.x = vb.x; svg.viewBox.baseVal.y = vb.y; svg.viewBox.baseVal.width = vb.w; svg.viewBox.baseVal.height = vb.h;
+    var redrawVB = function(){ svg.setAttribute("viewBox", vb.x+" "+vb.y+" "+vb.w+" "+vb.h); };
+    // wheel zoom
+    svg.addEventListener("wheel", function(e){
+      e.preventDefault();
+      var f = e.deltaY < 0 ? 0.9 : 1.1;
+      var nw = vb.w * f; var nh = vb.h * f;
+      if(nw < 200 || nw > 4000) return;
+      vb.w = nw; vb.h = nh; redrawVB();
+    }, { passive:false });
+    // drag pan
+    var dragging=false, sx=0, sy=0;
+    svg.addEventListener("pointerdown", function(e){ dragging=true; sx=e.clientX; sy=e.clientY; svg.classList.add("dragging"); });
+    window.addEventListener("pointermove", function(e){ if(!dragging) return; vb.x -= (e.clientX-sx); vb.y -= (e.clientY-sy); sx=e.clientX; sy=e.clientY; redrawVB(); });
+    window.addEventListener("pointerup", function(){ dragging=false; svg.classList.remove("dragging"); });
+    // focus-on-selection: re-center on node
+    function focusNode(n){ vb.x = n.x - vb.w/2; vb.y = n.y - vb.h/2; redrawVB(); }
+    // keyboard
+    svg.setAttribute("tabindex","0");
+    svg.addEventListener("keydown", function(e){
+      if(e.key==="+"||e.key==="="){ vb.w*=0.9; vb.h*=0.9; redrawVB(); e.preventDefault(); }
+      else if(e.key==="-"){ vb.w*=1.1; vb.h*=1.1; redrawVB(); e.preventDefault(); }
+      else if(e.key==="ArrowLeft"){ vb.x-=20; redrawVB(); e.preventDefault(); }
+      else if(e.key==="ArrowRight"){ vb.x+=20; redrawVB(); e.preventDefault(); }
+      else if(e.key==="ArrowUp"){ vb.y-=20; redrawVB(); e.preventDefault(); }
+      else if(e.key==="ArrowDown"){ vb.y+=20; redrawVB(); e.preventDefault(); }
+      else if(e.key==="0"||e.key==="r"){ vb.x=0; vb.y=0; vb.w=1000; vb.h=460; redrawVB(); e.preventDefault(); }
+    });
+    // hook node clicks to focus
+    el.querySelectorAll(".engine-node").forEach(function(g){
+      g.addEventListener("click", function(){ var id=g.getAttribute("data-node"); var n=null; r.nodes.forEach(function(x){ if(x.id===id) n=x; }); if(n) focusNode(n); });
+    });
+    // reduced motion: disable transitions if preferred (our graph has none, but keep the class for consistency)
+    var rm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+    if(rm && rm.matches){ svg.style.transition="none"; }
   }
 
 
