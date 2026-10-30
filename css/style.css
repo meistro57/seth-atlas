@@ -147,3 +147,32 @@ footer.site-foot{border-top:1px solid var(--border);background:var(--bg-soft);}
 @keyframes emptyAppear{to{width:180px;height:180px;opacity:1}}
 @media(prefers-reduced-motion:reduce){ .opening-stage .beat{animation:none} .opening-stage .beat-empty{animation:none;width:180px;height:180px;opacity:1} }
 .opening-stage .beat[hidden]{display:none;}
+
+/* Cinematic opening story (Part One) */
+.story{position:relative;padding:0;margin:0;}
+.story .scene{max-width:var(--maxw);margin:0 auto;padding:64px 20px;border-bottom:1px solid var(--border-soft);text-align:center;position:relative;}
+.story .scene-1{min-height:480px;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  background:radial-gradient(900px 600px at 50% -10%, rgba(86,212,240,.12), transparent 60%);}
+.scene-kicker{font-size:.8rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+.scene-title{font-size:clamp(1.8rem,5vw,3.2rem);font-weight:800;line-height:1.12;margin:0 0 20px;color:var(--ink);}
+.scene-title em{font-style:italic;color:var(--accent-2);}
+.scene-copy{font-size:clamp(1rem,2.2vw,1.15rem);color:var(--ink-dim);max-width:58ch;margin:0 auto;line-height:1.7;}
+.scene-copy.dim{color:var(--ink-faint);}
+.scene-copy strong{color:var(--ink);}
+/* Scene 2 reveal — the dramatic centrepiece */
+.scene-2{min-height:420px;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  background:radial-gradient(1000px 700px at 50% 50%, rgba(154,123,255,.14), transparent 60%);}
+.scene-reveal{display:flex;flex-direction:column;gap:22px;align-items:center;margin-bottom:26px;}
+.reveal-line{font-size:clamp(1.2rem,3.4vw,2rem);font-weight:700;letter-spacing:.08em;color:var(--ink);animation:revealIn .9s ease both;}
+.reveal-line.reveal-punch{color:var(--violet);font-size:clamp(1.5rem,4.6vw,2.8rem);animation-delay:.7s;text-shadow:0 0 40px rgba(154,123,255,.35);}
+.reveal-spacer{width:44px;height:2px;background:var(--border);}
+@keyframes revealIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+/* Scene 4 CTA */
+.scene-4{min-height:300px;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  background:radial-gradient(700px 420px at 50% 100%, rgba(229,192,123,.08), transparent 60%);}
+.cta{display:inline-block;margin-top:26px;padding:14px 34px;border:1px solid var(--accent);border-radius:999px;
+  color:var(--accent-2);font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(86,212,240,.08);
+  transition:transform .2s ease, background .2s ease, box-shadow .2s ease;}
+.cta:hover{transform:translateY(-2px);background:rgba(86,212,240,.16);box-shadow:0 0 40px rgba(86,212,240,.25);text-decoration:none;}
+@media(prefers-reduced-motion:reduce){ .reveal-line{animation:none} .cta{transition:none} }
+@media(max-width:640px){ .story .scene{padding:48px 16px} }
