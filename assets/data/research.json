@@ -439,6 +439,24 @@
         "evidence": "772425",
         "status": "annotation",
         "label_deletion": "survives as 772425 stage boundary"
+      },
+      {
+        "id": "selector-rain",
+        "label": "You — expect rain",
+        "layer": "individual",
+        "desc": "One selector: admits rain into physical experience.",
+        "evidence": "895048 (react individually)",
+        "status": "explicit",
+        "unjoined": true
+      },
+      {
+        "id": "selector-sun",
+        "label": "She — expect sunshine",
+        "layer": "individual",
+        "desc": "Another selector: admits sunshine. The text names no relation between the two.",
+        "evidence": "895048 (react individually)",
+        "status": "explicit",
+        "unjoined": true
       }
     ],
     "connections": [
@@ -519,7 +537,12 @@
         "evidence": "the handoff is where the participant is \"not consciously aware how\" (483387)",
         "deletion_test": "annotation — removing it does not change the causal graph"
       }
-    ]
+    ],
+    "unjoinedPair": {
+      "a": "selector-rain",
+      "b": "selector-sun",
+      "note": "No edge: the text does not place these two selections in relation. Disagreement is not a case the model treats."
+    }
   },
   "mysteryMap": {
     "central": "shared-event",

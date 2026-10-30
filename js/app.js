@@ -173,7 +173,9 @@
       belief:[80,60], probable:[240,150], selection:[240,340],
       handoff:[400,340], unconscious:[400,240], actuality:[600,340],
       experience:[760,340], collective:[600,80], attraction:[400,80],
-      arbitration:[500,460]
+      arbitration:[500,460],
+      'selector-rain':[60,460],
+      'selector-sun':[940,460]
     };
     nodes.forEach(function(n){ n.x = pos[n.id] ? pos[n.id][0] : 300; n.y = pos[n.id] ? pos[n.id][1] : 260; });
     return nodes;
@@ -221,6 +223,7 @@
       }
     });
     s += '</svg>';
+    s += '<div class="unjoined-note"><strong>Unjoined:</strong> '+ (DATA.realityEngine.unjoinedPair ? DATA.realityEngine.unjoinedPair.note : '') +'</div>';
     s += '<div class="engine-detail" id="engine-detail"><div class="empty-slate">Click a node or connection.</div></div>';
     s += '</div>';
     el.innerHTML = s;
