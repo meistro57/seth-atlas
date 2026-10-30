@@ -318,10 +318,37 @@
     el.innerHTML = html;
   }
 
+
+  // ---- Immersive opening: four-beat sequence ----
+  function wireOpening(){
+    var stage = document.getElementById("opening-stage"); if(!stage) return;
+    var beats = stage.querySelectorAll(".beat");
+    var counter = document.getElementById("opening-counter");
+    var prev = document.getElementById("opening-prev");
+    var next = document.getElementById("opening-next");
+    var i = 0;
+    function show(n){
+      i = Math.max(0, Math.min(beats.length-1, n));
+      beats.forEach(function(b, idx){ b.hidden = (idx !== i); });
+      if(counter) counter.textContent = (i+1) + " / " + beats.length;
+      // re-trigger empty-appear animation on beat 3
+      var empty = stage.querySelector(".beat-empty");
+      if(empty && i===2){ empty.style.animation = "none"; void empty.offsetWidth; empty.style.animation = ""; }
+      var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if(reduced){ // show all beats statically stacked? No — show current beat only, no motion needed
+      }
+    }
+    if(next) next.addEventListener("click", function(){ show(i+1); });
+    if(prev) prev.addEventListener("click", function(){ show(i-1); });
+    show(0);
+  }
+
+
   document.addEventListener("DOMContentLoaded", function(){
     fetch(DATA_URL).then(function(r){return r.json();}).then(function(d){
       DATA = d;
-      renderDashboard(); renderRobbery(); renderEngine(); renderMystery(); renderEvidence();
+      wireOpening();
+    renderDashboard(); renderRobbery(); renderEngine(); renderMystery(); renderEvidence();
     renderGallery(); wireObservatory(); renderCorrections(); renderQuestions(); renderTimeline(); wireTabs();
     }).catch(function(e){ console.error("data load failed", e); });
   });

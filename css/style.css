@@ -119,3 +119,31 @@ footer.site-foot{border-top:1px solid var(--border);background:var(--bg-soft);}
 @keyframes introIn{to{opacity:1;transform:translateY(0)}}
 .intro-note{margin-top:22px;font-size:.85rem;color:var(--ink-faint);}
 @media(prefers-reduced-motion:reduce){ .intro-step{opacity:1;transform:none;animation:none} }
+
+/* Immersive opening — four-beat storytelling */
+.opening{margin:0;padding:0;}
+.opening-stage{position:relative;min-height:440px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 20px 40px;
+  background:radial-gradient(1000px 600px at 50% 0%, rgba(154,123,255,.14), transparent 55%),
+             radial-gradient(1200px 700px at 50% 120%, rgba(86,212,240,.10), transparent 60%), var(--bg);
+  border-bottom:1px solid var(--border);overflow:hidden;}
+.opening-stage .beat{animation:fadeBeat .6s ease;}
+.opening-stage .beat-question{font-size:clamp(1.4rem,4vw,2.4rem);font-weight:700;letter-spacing:.02em;line-height:1.25;}
+.opening-stage .beat-question.dim{color:var(--ink-dim);}
+.opening-stage .beat-hook{margin-top:18px;font-size:1.05rem;color:var(--accent-2);}
+.opening-stage .beat-label{color:var(--ink-faint);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;}
+.opening-stage .rules{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:6px;}
+.opening-stage .rule{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;font-size:1rem;}
+.opening-stage .rule b{color:var(--gold);}
+.opening-stage .beat-sub{color:var(--ink-dim);margin-top:12px;font-style:italic;}
+.opening-stage .beat-turn{font-size:clamp(1.3rem,3.5vw,2rem);font-weight:700;color:var(--violet);}
+.opening-stage .beat-empty{margin:22px auto 0;width:0;height:0;border:2px dashed var(--bad);border-radius:50%;opacity:0;animation:emptyAppear 1s .4s forwards;}
+.opening-stage .beat-close{font-size:clamp(1.2rem,3vw,1.8rem);font-weight:700;}
+.opening-stage .beat-close.sub{font-size:1rem;color:var(--ink-dim);font-weight:400;margin-top:14px;max-width:44ch;line-height:1.5;}
+.opening-stage .beat-nav{margin-top:26px;display:flex;gap:12px;align-items:center;}
+.opening-stage .beat-nav button{background:var(--panel);border:1px solid var(--border);color:var(--ink);border-radius:var(--radius-sm);padding:6px 14px;cursor:pointer;font-size:1rem;}
+.opening-stage .beat-nav button:hover{color:var(--accent-2);border-color:var(--accent);}
+.opening-stage .beat-nav span{color:var(--ink-faint);font-variant-numeric:tabular-nums;}
+@keyframes fadeBeat{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes emptyAppear{to{width:180px;height:180px;opacity:1}}
+@media(prefers-reduced-motion:reduce){ .opening-stage .beat{animation:none} .opening-stage .beat-empty{animation:none;width:180px;height:180px;opacity:1} }
+.opening-stage .beat[hidden]{display:none;}
