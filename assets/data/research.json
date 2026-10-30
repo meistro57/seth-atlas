@@ -3,7 +3,7 @@
     "corpus_hash": "a96cae0e5c84ac82fa67db03937be7ed98ef19a0418b473c1e63b3ebf1e77784",
     "corpus_bytes": 1123310,
     "source_label": "NOPR 1.12 MB extraction",
-    "note": "Offsets are byte offsets into /tmp/seth_nopr.txt. OCR-derived; quoted fragments are limited quotations for research, not reproduction."
+    "note": "Offsets are CHARACTER offsets (UTF-8 decoded: Python str indexing over /tmp/seth_nopr.txt at 1,114,605 characters), not byte positions and not page numbers. Byte count of the file is 1,123,310; character offsets diverge after every multi-byte character (curly quotes, em dashes, OCR ligatures)."
   },
   "claims": [
     {
@@ -252,6 +252,10 @@
     {
       "when": "Phase 4",
       "what": "'no internal operations described' → 'not described in the passages examined' (coverage qualifier)"
+    },
+    {
+      "when": "Phase 4",
+      "what": "Provenance: offsets confirmed CHARACTER offsets (UTF-8 str indexing), not byte offsets — byte label in research.json corrected after empirical test at 490895 (character offset lands at sentence boundary, byte offset lands mid-word)"
     }
   ],
   "timeline": [

@@ -64,7 +64,7 @@
       <button role="tab" aria-selected="false" data-model="D">Phase 4</button>
     </div><div id="model-panel" class="card"><div class="empty-slate">Loading&hellip;</div></div></section>
     <section id="gallery-section"><h2>Diagram Gallery</h2><p class="lede" id="arrow-legend"><strong>Arrow semantics (on every diagram):</strong> <span class="pill explicit">solid</span> = quoted in source · <span class="pill inferred">dashed</span> = our inference · <span class="pill negative">[?]</span> = unresolved / not stated.</p><div class="grid cols-2" id="gallery"></div></section>
-    <section id="evidence"><h2>Evidence Explorer</h2><p class="lede" id="offset-legend" style="font-size:.8rem;color:var(--ink-faint);">All @numbers are byte offsets into our extraction (1,123,310 bytes; UTF-8, so they differ slightly from character counts — multi-byte characters offset the numbering)</p>
+    <section id="evidence"><h2>Evidence Explorer</h2><p class="lede" id="offset-legend" style="font-size:.8rem;color:var(--ink-faint);">All @numbers are character offsets (UTF-8 decoded) into our extraction — not byte positions, not page numbers</p>
       <div class="filters"><input id="ev-search" type="search" placeholder="Search claims&hellip;"/><select id="ev-filter"><option value="">All</option><option value="explicit">explicit</option><option value="inferred">inferred</option><option value="annotation">annotation</option><option value="negative">negative</option><option value="asserted">asserted-only</option></select></div>
       <div id="evidence-body"></div></section>
     <section id="timeline-section"><h2>Research Timeline</h2><div class="grid cols-2" id="timeline"></div></section>
@@ -74,7 +74,7 @@
 
     <section id="questions-section"><h2>Open Questions</h2><div class="grid cols-2" id="questions"></div></section>
     <section id="corrections-section"><h2>Corrections &amp; Retractions</h2><div id="corrections"></div></section>
-    <section id="sources"><h2>Source References</h2><div class="callout"><p>Offsets are byte positions into the verified extraction (SHA-256 a96cae0e&hellip;, 1,123,310 bytes), OCR-derived, not page numbers. Quotations are limited research-scope fragments.</p></div></section>
+    <section id="sources"><h2>Source References</h2><div class="callout"><p>Offsets are character offsets (UTF-8 decoded) into the verified extraction (SHA-256 a96cae0e&hellip;, 1,123,310 bytes), OCR-derived, not page numbers. Quotations are limited research-scope fragments.</p></div></section>
   </main>
   <footer class="site-foot"><div class="site-foot-inner">SETH RESEARCH LAB &mdash; evolving research portal. Provisional findings; retractions on the record.</div></footer>
   <div class="obs-lightbox" id="obs-lightbox" role="dialog" aria-modal="true" aria-label="Diagram viewer"><button class="obs-close" aria-label="Close">&times;</button><img src="" alt="Diagram, zoomable"/><div class="obs-controls"><button data-obs="out">-</button><button data-obs="reset">Reset</button><button data-obs="in">+</button></div></div>
