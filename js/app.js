@@ -168,22 +168,57 @@
     view: 'combined', ox: 0, oy: 0, scale: 1
   };
   function layoutNodes(nodes){
-    // fixed spatial layout (manual, meaningful: individual->collective left->right, layers top->bottom)
-    var pos = {
+    // seed positions (fallback so first frame isn't degenerate)
+    var seed = {
       belief:[80,60], probable:[240,150], selection:[240,340],
       handoff:[400,340], unconscious:[400,240], actuality:[600,340],
       experience:[760,340], collective:[600,80], attraction:[400,80],
-      arbitration:[500,460],
-      'selector-rain':[60,460],
-      'selector-sun':[940,460]
+      arbitration:[500,460], 'selector-rain':[60,460], 'selector-sun':[940,460]
     };
-    nodes.forEach(function(n){ n.x = pos[n.id] ? pos[n.id][0] : 300; n.y = pos[n.id] ? pos[n.id][1] : 260; });
+    nodes.forEach(function(n){ n.x = seed[n.id]?seed[n.id][0]:300; n.y = seed[n.id]?seed[n.id][1]:260; n.vx=0; n.vy=0; });
+    // anchors: keep the finding legible
+    var anchors = { arbitration:true, 'selector-rain':true, 'selector-sun':true };
+    nodes.forEach(function(n){ n.anchor = !!anchors[n.id]; });
+    return nodes;
+  }
+  function simulate(nodes, edges, steps){
+    var k=0.06; // spring stiffness
+    var repulsion=1400; // charge
+    var damping=0.85;
+    var ids={}; nodes.forEach(function(n){ ids[n.id]=n; });
+    for(var s=0;s<steps;s++){
+      // repulsion
+      for(var i=0;i<nodes.length;i++){ for(var j=i+1;j<nodes.length;j++){
+        var a=nodes[i], b=nodes[j];
+        var dx=a.x-b.x, dy=a.y-b.y; var d2=dx*dx+dy*dy+0.01; var d=Math.sqrt(d2);
+        var f=repulsion/d2;
+        a.vx+=dx/d*f; a.vy+=dy/d*f; b.vx-=dx/d*f; b.vy-=dy/d*f;
+      }}
+      // attraction along edges
+      edges.forEach(function(e){
+        var a=ids[e.from], b=ids[e.to]; if(!a||!b) return;
+        var dx=b.x-a.x, dy=b.y-a.y; var d=Math.sqrt(dx*dx+dy*dy)+0.01;
+        var f=(d-140)*k;
+        a.vx+=dx/d*f; a.vy+=dy/d*f; b.vx-=dx/d*f; b.vy-=dy/d*f;
+      });
+      // integrate
+      nodes.forEach(function(n){
+        if(n.anchor){ n.vx=0; n.vy=0; return; }
+        n.vx*=damping; n.vy*=damping;
+        n.x+=n.vx; n.y+=n.vy;
+        // keep in bounds
+        n.x=Math.max(40,Math.min(960,n.x)); n.y=Math.max(40,Math.min(600,n.y));
+      });
+    }
     return nodes;
   }
   function renderEngine(){
     var el = document.getElementById('engine-body'); if(!el||!DATA||!DATA.realityEngine) return;
     var r = DATA.realityEngine;
     layoutNodes(r.nodes);
+    var edgesForSim = r.connections.filter(function(c){ return c.status!=='annotation'; });
+    var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    simulate(r.nodes, edgesForSim, reduced ? 0 : 300);
     var nodes = r.nodes.filter(function(n){ return ENGINE.view==='combined' || n.layer===ENGINE.view; });
     var ids = {}; nodes.forEach(function(n){ ids[n.id]=1; });
     var edges = r.connections.filter(function(c){ return ids[c.from] && ids[c.to]; });
