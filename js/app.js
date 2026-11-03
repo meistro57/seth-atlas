@@ -131,6 +131,67 @@
       +'<p><strong>Standing:</strong> '+esc(m.status)+'</p>';
   }
 
+
+  // Diagram gallery lightbox with zoom, pan, keyboard and close controls.
+  function wireObservatory(){
+    var gallery=document.getElementById("gallery");
+    var box=document.getElementById("obs-lightbox");
+    if(!gallery||!box)return;
+    var img=box.querySelector("img");
+    var closeBtn=box.querySelector(".obs-close");
+    if(!img)return;
+    var zoom=1,dx=0,dy=0,lastFocus=null;
+    var dragging=false,px=0,py=0;
+    function draw(){img.style.transform="translate("+dx+"px,"+dy+"px) scale("+zoom+")";}
+    function setZoom(n){zoom=Math.max(0.5,Math.min(6,n));draw();}
+    function open(thumb){
+      lastFocus=thumb;img.src=thumb.getAttribute("data-full")||thumb.src;img.alt=thumb.alt;
+      zoom=1;dx=0;dy=0;draw();
+      box.classList.add("open");box.setAttribute("aria-hidden","false");
+      if(closeBtn)closeBtn.focus();
+    }
+    function close(){
+      box.classList.remove("open");box.setAttribute("aria-hidden","true");
+      dragging=false;img.removeAttribute("src");
+      if(lastFocus)lastFocus.focus();
+    }
+    gallery.querySelectorAll("img.gallery-thumb").forEach(function(thumb){
+      thumb.setAttribute("tabindex","0");thumb.setAttribute("role","button");
+      thumb.setAttribute("aria-label","Expand and zoom "+thumb.alt);
+      thumb.addEventListener("click",function(){open(thumb);});
+      thumb.addEventListener("keydown",function(e){
+        if(e.key==="Enter"||e.key===" "){e.preventDefault();open(thumb);}
+      });
+    });
+    if(closeBtn)closeBtn.addEventListener("click",close);
+    box.addEventListener("click",function(e){if(e.target===box)close();});
+    box.querySelectorAll("[data-obs]").forEach(function(b){
+      b.addEventListener("click",function(){
+        var a=b.getAttribute("data-obs");
+        if(a==="reset"){zoom=1;dx=0;dy=0;draw();}
+        else setZoom(a==="in"?zoom*1.25:zoom/1.25);
+      });
+    });
+    box.addEventListener("wheel",function(e){
+      e.preventDefault();setZoom(zoom*(e.deltaY<0?1.12:1/1.12));
+    },{passive:false});
+    img.style.touchAction="none";img.style.cursor="grab";
+    img.addEventListener("pointerdown",function(e){
+      dragging=true;px=e.clientX;py=e.clientY;
+      img.setPointerCapture(e.pointerId);img.style.cursor="grabbing";e.preventDefault();
+    });
+    img.addEventListener("pointermove",function(e){
+      if(!dragging)return;
+      dx+=e.clientX-px;dy+=e.clientY-py;px=e.clientX;py=e.clientY;draw();
+    });
+    function stopDrag(){dragging=false;img.style.cursor="grab";}
+    img.addEventListener("pointerup",stopDrag);
+    img.addEventListener("pointercancel",stopDrag);
+    document.addEventListener("keydown",function(e){
+      if(e.key==="Escape"&&box.classList.contains("open"))close();
+    });
+  }
+
   function wireTabs(){
     var tabs = document.querySelectorAll("#model-tabs button");
     tabs.forEach(function(b){
@@ -231,6 +292,8 @@
       +'<button data-view="combined" class="active">Combined</button>'
       +'<button data-view="individual">Individual</button>'
       +'<button data-view="collective">Collective</button>'
+      +'<button data-action="zoom-in" aria-label="Zoom map in">+</button>'
+      +'<button data-action="zoom-out" aria-label="Zoom map out">−</button>'
       +'<button data-action="reset">Reset view</button>'
       +'</div>';
     s += '<svg id="engine-canvas" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="xMidYMid meet">';
@@ -294,9 +357,7 @@
         renderEngine();
       });
     });
-    el.querySelectorAll('.engine-toolbar button[data-action]').forEach(function(b){
-      b.addEventListener('click', function(){ renderEngine(); });
-    });
+    // Map toolbar actions handled after viewBox initialization.
 
     // selection-driven recomposition: pull neighbours toward the selected node, push others away (smooth)
     function recompose(selId){
@@ -323,14 +384,23 @@
     var vb = { x:0, y:0, w:1000, h:460 };
     svg.viewBox.baseVal.x = vb.x; svg.viewBox.baseVal.y = vb.y; svg.viewBox.baseVal.width = vb.w; svg.viewBox.baseVal.height = vb.h;
     var redrawVB = function(){ svg.setAttribute("viewBox", vb.x+" "+vb.y+" "+vb.w+" "+vb.h); };
-    // wheel zoom
-    svg.addEventListener("wheel", function(e){
-      e.preventDefault();
-      var f = e.deltaY < 0 ? 0.9 : 1.1;
-      var nw = vb.w * f; var nh = vb.h * f;
-      if(nw < 200 || nw > 4000) return;
-      vb.w = nw; vb.h = nh; redrawVB();
-    }, { passive:false });
+    // Zoom buttons and mouse wheel use the same bounded zoom behavior.
+    function zoomMap(f){
+      var nw=vb.w*f,nh=vb.h*f;
+      if(nw<200||nw>4000)return;
+      vb.x+=(vb.w-nw)/2;vb.y+=(vb.h-nh)/2;
+      vb.w=nw;vb.h=nh;redrawVB();
+    }
+    svg.addEventListener("wheel",function(e){
+      e.preventDefault();zoomMap(e.deltaY<0?0.9:1.1);
+    },{passive:false});
+    el.querySelectorAll('.engine-toolbar button[data-action]').forEach(function(b){
+      b.addEventListener('click',function(){
+        var a=b.getAttribute('data-action');
+        if(a==='reset')renderEngine();
+        else zoomMap(a==='zoom-in'?0.8:1.25);
+      });
+    });
     // drag pan
     var dragging=false, sx=0, sy=0;
     svg.addEventListener("pointerdown", function(e){ dragging=true; sx=e.clientX; sy=e.clientY; svg.classList.add("dragging"); });
