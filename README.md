@@ -2,6 +2,8 @@
 
 *Explore the claims. Trace the evidence. Discover the missing connections.*
 
+https://meistro57.github.io/seth-atlas/
+
 *Reverse Engineering the Architecture of Reality*
 
 A responsive, client-side research site documenting a multi-phase investigation into a proposed model of reality: how belief relates to probable events, selection, materialisation, and the unresolved question of shared physical events.
