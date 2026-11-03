@@ -196,6 +196,72 @@
         "B"
       ],
       "text": "project those with which you basically agree... they coalesce into the events."
+    },
+    {
+      "id": "mb-p2",
+      "phase": "MB-II",
+      "claim": "Sleep paralysis is the one domain where 'one process, many labels' is demonstrated on real data: REM atonia persisting into wakefulness is established, and hallucinated content varies with culture while the mechanism stays fixed.",
+      "interpretation": "explicit",
+      "confidence": "high",
+      "status": "solid",
+      "models": [],
+      "offset": "—",
+      "text": "Demonstrates shared mechanism WITHIN the sleep-paralysis class. Does not extend to hauntings, poltergeists or entity contacts; extending it is the category error the investigation exists to catch."
+    },
+    {
+      "id": "mb-p2a",
+      "phase": "MB-IIa",
+      "claim": "An evidence audit of Phase II produced six corrections, all in one direction — claims asserted slightly past what the retrieval supported.",
+      "interpretation": "explicit",
+      "confidence": "high",
+      "status": "explicit",
+      "models": [],
+      "offset": "—",
+      "text": "The two most serious graded source authenticity and event reliability under a single label, and claimed a negative result for UFOs and poltergeists that the searches performed could not support."
+    },
+    {
+      "id": "mb-p3",
+      "phase": "MB-III",
+      "claim": "Focal-person localisation is the majority pattern in published poltergeist case reports, with a stated denominator of 906 coded cases.",
+      "interpretation": "inferred",
+      "confidence": "low",
+      "status": "provisional",
+      "models": [],
+      "offset": "—",
+      "text": "The citation list was selected to illustrate categories, not to sample them: 60% of selected cases under a century old against 43% in the author's own database. A majority pattern in the literature is not a majority in the world, and the stress variable is undocumented in every accessible case."
+    },
+    {
+      "id": "mb-p4",
+      "phase": "MB-IV",
+      "claim": "AWARE-II observed zero correct identifications of the hidden visual image among 28 interviewed survivors; the authors report the implicit test was underpowered and the subgroup with usable target exposure is not established.",
+      "interpretation": "negative",
+      "confidence": "high",
+      "status": "solid",
+      "models": [],
+      "offset": "—",
+      "text": "The observation is a null on the explicit channel over a small denominator, excluding a large effect rather than ruling out a small one. The remote-viewing comparison is incomplete; the claim that two fields differ in falsifiability structure is a hypothesis about this one comparison, not a law about two disciplines."
+    },
+    {
+      "id": "mb-p5",
+      "phase": "MB-V",
+      "claim": "The strongest supported connection is between unusual-experience REPORTING and interpretation processes.",
+      "interpretation": "inferred",
+      "confidence": "low",
+      "status": "provisional",
+      "models": [],
+      "offset": "—",
+      "text": "The cross-literature design was withdrawn (no discriminating power). The replacement is within-population and unrun. The surviving claim constrains no hypothesis and rules out nothing; it describes reporting, not experience."
+    },
+    {
+      "id": "mb-u1",
+      "phase": "MB-V-proto",
+      "claim": "Proposed within-population comparison (NOT RUN): do free sensory descriptions of sleep-paralysis episodes cluster by the reporter's interpretation, or by episode characteristics independent of it?",
+      "interpretation": "annotation",
+      "confidence": "n/a",
+      "status": "unexecuted",
+      "models": [],
+      "offset": "—",
+      "text": "Chance = 1/6 approx 16.7% across six categories; n = 120 analysable (recruited to 200); minimum detectable true recovery >= 27% at a=0.05 two-tailed, power ~0.80. A null may only be declared if recruitment target was met. Feasibility unresolved: no recruitment pathway, consent handling, or inter-rater reliability; no coded cross-cultural baseline currently available to us (a statement about our holdings, not the literature)."
     }
   ],
   "corrections": [
@@ -256,6 +322,46 @@
     {
       "when": "Phase 4",
       "what": "Provenance: offsets confirmed CHARACTER offsets (UTF-8 str indexing), not byte offsets — byte label in research.json corrected after empirical test at 490895 (character offset lands at sentence boundary, byte offset lands mid-word)"
+    },
+    {
+      "id": "mb-x1",
+      "what": "'Every documented poltergeist case localises to a person under strain'",
+      "when": "2026-11-02 — two cases surveyed, both selected because cited for that pattern; replaced by 'In the two most-cited cases...'"
+    },
+    {
+      "id": "mb-x2",
+      "what": "'No instrumented physical evidence exists for UFOs'",
+      "when": "2026-11-02 — labelled verified without searching physical-trace literature; replaced by 'No such evidence was located in the searches performed'"
+    },
+    {
+      "id": "mb-x3",
+      "what": "Fraud rate of 18% of the accessible register",
+      "when": "2026-11-02 — computed from a denominator excluding six of seven named cases; withdrawn entirely, a count of named cases is not a sample"
+    },
+    {
+      "id": "mb-x4",
+      "what": "'No focal person' as evidence no focal person existed",
+      "when": "2026-11-02 — conflates not-identified with not-existing; place-localisation recorded separately from demonstrated absence"
+    },
+    {
+      "id": "mb-x5",
+      "what": "'The label moves; the event doesn't'",
+      "when": "2026-11-02 — compares two retrospective reports collected together; replaced by 'Reported interpretations differ between recalled and current understanding'"
+    },
+    {
+      "id": "mb-x6",
+      "what": "Falsifiability asymmetry as a property of two fields",
+      "when": "2026-11-02 — one comparison is not a law; demoted to a hypothesis about this module"
+    },
+    {
+      "id": "mb-x7",
+      "what": "Cross-literature apparition/UFO protocol",
+      "when": "2026-11-02 — either outcome predicted before data, so no discriminating power; withdrawn, within-population design substituted"
+    },
+    {
+      "id": "mb-x8",
+      "what": "A Phase III report announced as written before it existed",
+      "when": "2026-11-02 — claim asserted ahead of its artifact; logged as a correction of record"
     }
   ],
   "timeline": [

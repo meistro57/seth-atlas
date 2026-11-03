@@ -14,6 +14,7 @@
   function statusDot(s){
     if(s==="negative"||s==="asserted-only"||s==="provisional-single-passage") return '<span class="status-dot warn"></span>';
     if(s==="annotation"||s==="open"||s==="unexamined-in-source") return '<span class="status-dot warn"></span>';
+    if(s==="unexecuted"||s==="not-run"||s==="proposal-only") return '<span class="status-dot idle"></span>';
     return '<span class="status-dot good"></span>';
   }
   function modelBadge(m){

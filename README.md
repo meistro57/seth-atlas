@@ -33,7 +33,8 @@ seth-research-lab/
 
 ## Source references & limitations
 
-- All offsets are byte positions into the verified extraction used for retrieval (SHA-256 `a96cae0e…`, 1,123,310 bytes). They are OCR-derived and do not correspond to printed page numbers.
+- All offsets are character positions (UTF-8 string indices) into the verified extraction used for retrieval (SHA-256 `a96cae0e…`, 1,114,605 characters in a 1,123,310-byte UTF-8 file). They are OCR-derived and do not correspond to printed page numbers.
+- Correction (2026-11-02, correction #13): offsets were previously described as byte positions; the verified convention is character offsets, confirmed by the 490895-boundary test.
 - Quoted fragments are limited, research-scope quotations — not reproduction of the source books.
 - Every claims "interpretation" label (explicit / inferred / annotation / negative / asserted) keeps Seth claims distinct from our interpretation.
 

@@ -54,6 +54,8 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .quote{border-left:3px solid var(--border);padding-left:14px;color:var(--ink-dim);font-style:italic;margin:.5em 0;}
 .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;}
 .status-dot.good{background:var(--good);} .status-dot.warn{background:var(--warn);} .status-dot.bad{background:var(--bad);}
+.status-dot.idle{background:transparent;border:1px solid var(--ink-faint);}
+.pill.unexecuted{background:transparent;border:1px dashed var(--ink-faint);color:var(--ink-dim);}
 .diagram-frame{background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--radius);padding:12px;overflow:auto;}
 .diagram-frame figure{margin:0;}
 .diagram-frame img{max-width:100%;height:auto;display:block;margin:0 auto;background:#fff;border-radius:4px;}
