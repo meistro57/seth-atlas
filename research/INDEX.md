@@ -14,6 +14,7 @@ Permanent identifiers never change; versions beneath them are added, never edite
 | MB-III | r1 | `e38b03a5858e59f3431179c88204233e8eaf15384f25f1a9030d0b12b868c831` | audited | 2026-11-02 | MB-III/r1 §11 |
 | MB-IV | r1 | `74560d596bce9ec6e55b5d94b8b182675f5598ec531c2485537acc6022ee23e0` | audited (erratum) | 2026-11-02 | MB-IV/r1 E-1..E-4 |
 | MB-V | r1 | `c5911273de8cfe8d0309b764fa17d7bf894b2d81e67751e611ed60887b8e44c1` | PASS | 2026-11-02 | MB-V/r2 (pending) |
+| MB-VI | r1 | pending (Hope report, not yet hashed) | **pending** | 2026-11-03 | — |
 | MB-XREF | r1 | `67e5bfa994feb6e14a7d86b2c1be285d7cd9e77b466f66d4e20506045c0f7b54` | reviewed (bounded) | 2026-11-02 | — |
 | MB-ATLAS | r1 | `b64d252da583ac2aca4fe8a0b0e5b373ef924f807f11457185a4038a8a90c67b` | PASS | 2026-11-02 | — |
 
